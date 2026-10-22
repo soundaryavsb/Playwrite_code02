@@ -11,6 +11,7 @@ test("frames concept", async ({ page }) => {
         console.log("Frame " + count + ": " + await frameTitle.title());
     }
     await page.waitForTimeout(3000);
+    //locate frame and do task
     let frame1 = page.frame({ url: "https://ui.vision/demo/webtest/frames/frame_1" });
     await frame1?.locator("//input[@name='mytext1']").fill("Hello");
     let frame2 = page.frameLocator("//frame[@src='frame_2.html']");

@@ -15,6 +15,7 @@ test("frames concept",async ({page}) => {
     }
     await page.waitForTimeout(3000);
 
+    //locate frame and do task
     let frame1=page.frame({url:"https://ui.vision/demo/webtest/frames/frame_1"});
     await frame1?.locator("//input[@name='mytext1']").fill("Hello");
 
@@ -26,7 +27,7 @@ test("frames concept",async ({page}) => {
 
     let frame3Inside=frame3?.frameLocator('//*[@src="https://docs.google.com/forms/d/e/1FAIpQLSf5WiH3jEQApYku0Rl_nreU6_YMuLKAH5ffHuASyykQSIBjmg/viewform?embedded=true"]')
     await frame3Inside?.locator('#i9').check();
-    
+
     await page.waitForTimeout(3000);
 
 
