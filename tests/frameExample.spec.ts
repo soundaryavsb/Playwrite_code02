@@ -17,6 +17,18 @@ test("frames concept",async ({page}) => {
 
     let frame1=page.frame({url:"https://ui.vision/demo/webtest/frames/frame_1"});
     await frame1?.locator("//input[@name='mytext1']").fill("Hello");
+
+    let frame2 = page.frameLocator("//frame[@src='frame_2.html']");
+    await frame2.getByRole("textbox").fill("frame2");
+    
+    let frame3 = page.frame({url:"https://ui.vision/demo/webtest/frames/frame_3"});
+    await frame3?.getByRole("textbox").fill("frame3");
+
+    let frame3Inside=frame3?.frameLocator('//*[@src="https://docs.google.com/forms/d/e/1FAIpQLSf5WiH3jEQApYku0Rl_nreU6_YMuLKAH5ffHuASyykQSIBjmg/viewform?embedded=true"]')
+    await frame3Inside?.locator('#i9').check();
+    
     await page.waitForTimeout(3000);
+
+
 
 })
